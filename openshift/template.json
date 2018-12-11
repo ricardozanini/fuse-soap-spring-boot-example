@@ -66,6 +66,7 @@
                 "name": "temperature-conversion"
             },
             "spec": {
+                "replicas": 1,
                 "selector": {
                     "deploymentconfig": "temperature-conversion"
                 },
@@ -128,7 +129,7 @@
                                         "port": 8081,
                                         "scheme": "HTTP"
                                     },
-                                    "initialDelaySeconds": 60,
+                                    "initialDelaySeconds": 120,
                                     "periodSeconds": 10,
                                     "successThreshold": 1,
                                     "timeoutSeconds": 2
