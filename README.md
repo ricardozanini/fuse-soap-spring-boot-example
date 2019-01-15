@@ -26,4 +26,4 @@ Your **temperature converter** SOAP service will be ready to use.
 - WSDL: [http://localhost:8080/services/TemperatureEndpoint?wsdl](http://localhost:8080/services/TemperatureEndpoint?wsdl)
 - SOAP Endpoint: [http://localhost:8080/services/TemperatureEndpoint](http://localhost:8080/services/TemperatureEndpoint)
 
-**Note:** If on OpenShift, change `localhost:8080` to your route hostname.
+**Note:** If on OpenShift, change `localhost:8080` to your route hostname and the protocol to **`https`**.
