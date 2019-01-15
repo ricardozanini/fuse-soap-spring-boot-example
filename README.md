@@ -19,9 +19,6 @@ A simple example of how to implement a JAX-WS (Soap) CXF service with Camel and 
 
 Your **temperature converter** SOAP service will be ready to use.
 
-#### Mount the secrets credentials
-
-The template will create a secret inside your project named as `temperature-conversion-credentials` with the credentials provided during the template processing. Now, it's needed to mount the secret into the `/etc/secrets/credentials`. This way, Spring Cloud Kubernetes will merge this configurations with the `application.properties` file provided by the Config Map.
 
 ### Endpoints
 

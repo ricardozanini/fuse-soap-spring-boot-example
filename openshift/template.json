@@ -71,6 +71,37 @@
 			}
 		},
 		{
+			"apiVersion": "v1",
+			"kind": "ConfigMap",
+			"metadata": {
+				"labels": {
+					"app": "temperature-conversion"
+				},
+				"name": "temperature-conversion"
+			},
+			"data": {
+				"application.properties": ""
+			}
+		},
+		{
+			"apiVersion": "v1",
+			"kind": "Secret",
+			"metadata": {
+				"labels": {
+					"app": "temperature-conversion"
+				},
+				"name": "temperature-conversion-credentials",
+				"annotations": {
+					"template.openshift.io/base64-expose-password": "{.data['security\\.user\\.password']}"
+				}
+			},
+			"type": "Opaque",
+			"stringData": {
+				"security.user.name": "${SVC_USER_NAME}",
+				"security.user.password": "${SVC_PASSWORD}"
+			}
+		},
+		{
 			"apiVersion": "apps.openshift.io/v1",
 			"kind": "DeploymentConfig",
 			"metadata": {
@@ -161,7 +192,14 @@
 									}
 								},
 								"terminationMessagePath": "/dev/termination-log",
-								"terminationMessagePolicy": "File"
+								"terminationMessagePolicy": "File",
+								"volumeMounts": [
+									{
+										"mountPath": "/etc/secrets/credentials",
+										"name": "volume-credentials",
+										"readOnly": true
+									}
+								]
 							}
 						],
 						"dnsPolicy": "ClusterFirst",
@@ -170,7 +208,16 @@
 						"securityContext": {
 							
 						},
-						"terminationGracePeriodSeconds": 30
+						"terminationGracePeriodSeconds": 30,
+						"volumes": [
+							{
+								"name": "volume-credentials",
+								"secret": {
+									"defaultMode": 420,
+									"secretName": "temperature-conversion-credentials"
+								}
+							}
+						]
 					}
 				},
 				"triggers": [
@@ -314,37 +361,6 @@
 					"name": "sa-temperature-conversion"
 				}
 			]
-		},
-		{
-			"apiVersion": "v1",
-			"kind": "ConfigMap",
-			"metadata": {
-				"labels": {
-					"app": "temperature-conversion"
-				},
-				"name": "temperature-conversion"
-			},
-			"data": {
-				"application.properties": ""
-			}
-		},
-		{
-			"apiVersion": "v1",
-			"kind": "Secret",
-			"metadata": {
-				"labels": {
-					"app": "temperature-conversion"
-				},
-				"name": "temperature-conversion-credentials",
-				"annotations": {
-					"template.openshift.io/base64-expose-password": "{.data['security\\.user\\.password']}"
-				}
-			},
-			"type": "Opaque",
-			"stringData": {
-				"security.user.name": "${SVC_USER_NAME}",
-				"security.user.password": "${SVC_PASSWORD}"
-			}
 		}
 	]
 }
