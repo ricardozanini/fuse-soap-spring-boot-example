@@ -72,6 +72,35 @@
 		},
 		{
 			"apiVersion": "v1",
+			"kind": "ServiceAccount",
+			"metadata": {
+				"labels": {
+					"app": "temperature-conversion"
+				},
+				"name": "sa-temperature-conversion"
+			}
+		},
+		{
+			"apiVersion": "authorization.openshift.io/v1",
+			"kind": "RoleBinding",
+			"metadata": {
+				"labels": {
+					"app": "temperature-conversion"
+				},
+				"name": "temperature-conversion"
+			},
+			"roleRef": {
+				"name": "view"
+			},
+			"subjects": [
+				{
+					"kind": "ServiceAccount",
+					"name": "sa-temperature-conversion"
+				}
+			]
+		},
+		{
+			"apiVersion": "v1",
 			"kind": "ConfigMap",
 			"metadata": {
 				"labels": {
@@ -137,6 +166,7 @@
 						}
 					},
 					"spec": {
+						"serviceAccountName": "sa-temperature-conversion",
 						"containers": [
 							{
 								"image": "temperature-conversion",
@@ -332,35 +362,6 @@
 				},
 				"wildcardPolicy": "None"
 			}
-		},
-		{
-			"apiVersion": "v1",
-			"kind": "ServiceAccount",
-			"metadata": {
-				"labels": {
-					"app": "temperature-conversion"
-				},
-				"name": "sa-temperature-conversion"
-			}
-		},
-		{
-			"apiVersion": "authorization.openshift.io/v1",
-			"kind": "RoleBinding",
-			"metadata": {
-				"labels": {
-					"app": "temperature-conversion"
-				},
-				"name": "temperature-conversion"
-			},
-			"roleRef": {
-				"name": "view"
-			},
-			"subjects": [
-				{
-					"kind": "ServiceAccount",
-					"name": "sa-temperature-conversion"
-				}
-			]
 		}
 	]
 }
