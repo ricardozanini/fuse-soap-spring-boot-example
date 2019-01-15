@@ -11,7 +11,7 @@
 			"author": "Ricardo Zanini <ricardozanini@gmail.com>",
 			"tags": "camel, cxf, spring-boot, soap, fuse",
 			"url": "https://github.com/ricardozanini/fuse-soap-spring-boot-example",
-			"iconClass": "icon-java"
+			"iconClass": "icon-rh-integration"
 		},
 		"name": "temperature-conversion-template"
 	},
