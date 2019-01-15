@@ -2,8 +2,7 @@
 	"apiVersion": "v1",
 	"kind": "Template",
 	"labels": {
-		"template": "temperature-conversion",
-		"project": "temperature-conversion"
+		"app": "temperature-conversion"
 	},
 	"metadata": {
 		"annotations": {
