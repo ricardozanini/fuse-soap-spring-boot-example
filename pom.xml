@@ -10,7 +10,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
 		<!-- configure the versions you want to use here -->
-		<fuse.version>7.1.0.fuse-710019-redhat-00002</fuse.version>
+		<fuse.version>7.2.0.fuse-720020-redhat-00001</fuse.version>
 		<spring.version>1.5.13.RELEASE</spring.version>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.compiler.source>1.8</maven.compiler.source>
@@ -38,6 +38,11 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<!-- Spring Cloud k8s docs https://github.com/spring-cloud/spring-cloud-kubernetes -->
+		<dependency>
+			<groupId>io.fabric8</groupId>
+			<artifactId>spring-cloud-kubernetes-core</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.camel</groupId>

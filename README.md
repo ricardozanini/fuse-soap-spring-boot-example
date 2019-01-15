@@ -15,9 +15,13 @@ A simple example of how to implement a JAX-WS (Soap) CXF service with Camel and 
 1. Clone this repo: `git clone https://github.com/ricardozanini/fuse-soap-spring-boot-example.git`
 2. `cd fuse-soap-spring-boot-example`
 3. Login to your cluster and select a project: `oc login -u <user> -p <password> && oc project <myproject>`
-4. run `oc process -f openshift/template.json | oc create -f -`
+4. run `oc process -f openshift/template.json -p SVC_USER_NAME=user -p SVC_PASSWORD=test | oc create -f -`
 
 Your **temperature converter** SOAP service will be ready to use.
+
+#### Mount the secrets credentials
+
+The template will create a secret inside your project named as `temperature-conversion-credentials` with the credentials provided during the template processing. Now, it's needed to mount the secret into the `/etc/secrets/credentials`. This way, Spring Cloud Kubernetes will merge this configurations with the `application.properties` file provided by the Config Map.
 
 ### Endpoints
 

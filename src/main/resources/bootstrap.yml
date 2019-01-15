@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: temperature-conversion
+  cloud:
+    kubernetes:
+      secrets:
+        paths:
+        - /etc/secrets/credentials
+      reload:
+        enabled: true
