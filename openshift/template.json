@@ -177,7 +177,7 @@
 										"port": 8081,
 										"scheme": "HTTP"
 									},
-									"initialDelaySeconds": 120,
+									"initialDelaySeconds": 200,
 									"periodSeconds": 10,
 									"successThreshold": 1,
 									"timeoutSeconds": 2
@@ -205,7 +205,7 @@
 										"port": 8081,
 										"scheme": "HTTP"
 									},
-									"initialDelaySeconds": 120,
+									"initialDelaySeconds": 200,
 									"periodSeconds": 10,
 									"successThreshold": 1,
 									"timeoutSeconds": 2
@@ -213,11 +213,11 @@
 								"resources": {
 									"limits": {
 										"cpu": "500m",
-										"memory": "128Mi"
+										"memory": "256Mi"
 									},
 									"requests": {
 										"cpu": "200m",
-										"memory": "64Mi"
+										"memory": "128Mi"
 									}
 								},
 								"terminationMessagePath": "/dev/termination-log",
